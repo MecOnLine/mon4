@@ -1,12 +1,8 @@
 URL: https://api.simpliroute.com/v1/
-
-
 ccurl curl -X GET \
   https://api.simpliroute.com/v1/accounts/me/ \
   -H 'authorization: Token 0e8048197b328b753ff0c98a74ddac7a031dc36e \
   -H 'content-type: application/json' \
-
-
 {
         "id": 123,
         "order": 1,
@@ -42,11 +38,8 @@ ccurl curl -X GET \
         "pictures": [],
         "priority_level": 1
     }
-
 POST https://api.simpliroute.com/v1/routes/visits/
-
- [{ "title": "Kwik e mart 1", "Endereço": "Avenida Guianas, 10 Vila Kennedy, bangu Rio de Janeiro, Brasil", "latitude": -22.8540103, "longitude": -43.493144, "contact_name": "Seu nome aqui", "contact_phone": "+55 seutelefone aqui", "contacto_email": "seu email aqui", "reference": "invoice_id", "notes": "Leave at front door", "planned_date": "2020-01-01" }, { "title": "Simpsons Home", "address": "Avenida Guianas, 10 Vila Kennedy, bangu Rio de Janeiro, Brasil", "latitude": -22.8540103, "longitude": -43.493144, "contacto": "joao", "contact_phone": "+55", "email": "marge@example.com", "referencia": "invoice_id", "notas": "Treehouse", "planned_date": "2020-01-01" }]
-
+ [{ "title": "Kwik e mart 1", "EndereÃ§o": "Avenida Guianas, 10 Vila Kennedy, bangu Rio de Janeiro, Brasil", "latitude": -22.8540103, "longitude": -43.493144, "contact_name": "Seu nome aqui", "contact_phone": "+55 seutelefone aqui", "contacto_email": "seu email aqui", "reference": "invoice_id", "notes": "Leave at front door", "planned_date": "2020-01-01" }, { "title": "Simpsons Home", "address": "Avenida Guianas, 10 Vila Kennedy, bangu Rio de Janeiro, Brasil", "latitude": -22.8540103, "longitude": -43.493144, "contacto": "joao", "contact_phone": "+55", "email": "marge@example.com", "referencia": "invoice_id", "notas": "Treehouse", "planned_date": "2020-01-01" }]
 curl -X POST \
     https://api.simpliroute.com/v1/routes/visits/ \
     -H 'authorization: Token 0e8048197b328b753ff0c98a74ddac7a031dc36e \
@@ -63,17 +56,11 @@ curl -X POST \
     "notes": "Leave at front door",
     "planned_date": "2020-01-01"
   }'
-
-
-GET https://api.simpliroute.com/v1/routes/visits/{{visit_id}}
-
-
+GET https://api.simpliroute.com/v1/routes/visits/{{visit_id}}
 curl -X GET \
   https://api.simpliroute.com/v1/routes/visits/12345 \
   -H 'authorization: Token 0e8048197b328b753ff0c98a74ddac7a031dc36e \
   -H 'content-type: application/json' \
-
-
 {
     "id": 12345,
     "order": 1,
@@ -122,19 +109,12 @@ curl -X GET \
     "has_alert": false,
     "priority_level": null
 }
-
-
 GET https://api.simpliroute.com/v1/routes/visits/?planned_date={{planned_date}}
-
-
 curl -X GET \
   'https://api.simpliroute.com/v1/routes/visits/?planned_date=2020-01-01' \
   -H 'authorization: Token 0e8048197b328b753ff0c98a74ddac7a031dc36e \
   -H 'content-type: application/json'
-
-
 PUT https://api.simpliroute.com/v1/routes/visits/{{visit_id}}
-
 curl -X PUT \
   https://api.simpliroute.com/v1/routes/visits/1111/ \
   -H 'authorization: Token 0e8048197b328b753ff0c98a74ddac7a031dc36e \
@@ -149,15 +129,11 @@ curl -X PUT \
   "notes": "New information",
   "planned_date": "2020-06-30"
 }'
-
 https://optimizator.simpliroute.com/vrp/optimize/sync/
-
-
-
 {
     "vehicles": [
         {
-            "identidade do veículo": "Vehicle 1",
+            "identidade do veÃ­culo": "Vehicle 1",
             "location_start": {
                 "ident": "warehouse A",
                 "lat": -33.4233926,
@@ -227,7 +203,6 @@ https://optimizator.simpliroute.com/vrp/optimize/sync/
             "window_start_2": "19:00",
             "window_end_2": "22:00",
             "priority_level": 1,
-
             "duration": 10
         }
     ],
@@ -237,9 +212,7 @@ https://optimizator.simpliroute.com/vrp/optimize/sync/
       "open_ended": false,
       "single_tour": true,
       "fmv":1.0
-
 }
-
 {
     "ident": "Vehicle 1",
     "location_start": {
@@ -260,7 +233,6 @@ https://optimizator.simpliroute.com/vrp/optimize/sync/
     "skills": ["north-east", "electricity", "cold"],
     "refill": 30
 }
-
 {
     "nodes": [
         {
@@ -283,11 +255,9 @@ https://optimizator.simpliroute.com/vrp/optimize/sync/
             "skills_required": ["north-east"],
             "skills_optional": ["electricity"],
             "priority_level": 2
-
         }
     ]
 }
-
 {
     "vehicles": [
         {
@@ -317,7 +287,6 @@ https://optimizator.simpliroute.com/vrp/optimize/sync/
         }
     ]
 }
-
 {
     "vehicles": [{
         "ident": "Vehicle 1",
@@ -365,7 +334,6 @@ https://optimizator.simpliroute.com/vrp/optimize/sync/
     }],
     "num_vehicles_used": 1
 }
-
 {
     "vehicles": [{
         "ident": "Vehicle 1 different start and end",
@@ -398,8 +366,6 @@ https://optimizator.simpliroute.com/vrp/optimize/sync/
         "duration": 5
     }]
 }
-
-
 {
     {
     "vehicles": [{
@@ -448,10 +414,7 @@ https://optimizator.simpliroute.com/vrp/optimize/sync/
     }],
     "num_vehicles_used": 1
 }
-
-
 https://optimizator.simpliroute.com/etc/sync
-
 {
   "vehicle": {
     "vehicle_id": "Vehicle 1",
@@ -485,8 +448,6 @@ https://optimizator.simpliroute.com/etc/sync
   }],
   "fmv":2.0
 }
-
-
 {
     "vehicle": {
         "vehicle_id": "Vehicle 1",
@@ -528,5 +489,3 @@ https://optimizator.simpliroute.com/etc/sync
         }
     ]
 }
-
-
