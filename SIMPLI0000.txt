@@ -1,0 +1,532 @@
+URL: https://api.simpliroute.com/v1/
+
+
+ccurl curl -X GET \
+  https://api.simpliroute.com/v1/accounts/me/ \
+  -H 'authorization: Token 0e8048197b328b753ff0c98a74ddac7a031dc36e \
+  -H 'content-type: application/json' \
+
+
+{
+        "id": 123,
+        "order": 1,
+        "tracking_id": "SR12345678901234",
+        "status": "pending",
+        "title": "Kwik e mart",
+        "address": "Rio de Janeiro, Brasil",
+        "latitude": -22.91423498512628,
+        "longitude":  -43.44598205,
+        "load": 1.2,
+        "load_2": 2.0,
+        "load_3": 3.1,
+        "window_start": "10:00",
+        "window_end": "14:00",
+        "window_start_2": "15:00",
+        "window_end_2": "18:00",
+        "duration": "10",
+        "contact_name": "Apu Nahasapeemapetilon",
+        "contact_phone": "+5521999121080",
+        "contact_email": "contatomonline@gmail.com",
+        "reference": "invoice_id",
+        "notes": "Leave at front door",
+        "skills_required": [],
+        "skills_optional": [],
+        "planned_date": "2020-01-01",
+        "estimated_time_arrival": null,
+        "estimated_time_departure": null,
+        "checkin_time": null,
+        "checkout_time": null,
+        "checkout_latitude": null,
+        "checkout_longitude": null,
+        "checkout_comment": "Delivery was completed!",
+        "pictures": [],
+        "priority_level": 1
+    }
+
+POST https://api.simpliroute.com/v1/routes/visits/
+
+ [{ "title": "Kwik e mart 1", "Endereço": "Avenida Guianas, 10 Vila Kennedy, bangu Rio de Janeiro, Brasil", "latitude": -22.8540103, "longitude": -43.493144, "contact_name": "Seu nome aqui", "contact_phone": "+55 seutelefone aqui", "contacto_email": "seu email aqui", "reference": "invoice_id", "notes": "Leave at front door", "planned_date": "2020-01-01" }, { "title": "Simpsons Home", "address": "Avenida Guianas, 10 Vila Kennedy, bangu Rio de Janeiro, Brasil", "latitude": -22.8540103, "longitude": -43.493144, "contacto": "joao", "contact_phone": "+55", "email": "marge@example.com", "referencia": "invoice_id", "notas": "Treehouse", "planned_date": "2020-01-01" }]
+
+curl -X POST \
+    https://api.simpliroute.com/v1/routes/visits/ \
+    -H 'authorization: Token 0e8048197b328b753ff0c98a74ddac7a031dc36e \
+    -H 'content-type: application/json' \
+    -d '{
+    "title": "Kwik e mart",
+    "address": "0e8048197b328b753ff0c98a74ddac7a031dc36e",
+    "latitude": -22.8540103,
+    "longitude": -43.493144,
+    "contact_name": "Seu nome aqui",
+    "contact_phone": "+55 seutelefone aqui",
+    "contact_email": "seu email aqui",
+    "reference": "invoice_id",
+    "notes": "Leave at front door",
+    "planned_date": "2020-01-01"
+  }'
+
+
+GET https://api.simpliroute.com/v1/routes/visits/{{visit_id}}
+
+
+curl -X GET \
+  https://api.simpliroute.com/v1/routes/visits/12345 \
+  -H 'authorization: Token 0e8048197b328b753ff0c98a74ddac7a031dc36e \
+  -H 'content-type: application/json' \
+
+
+{
+    "id": 12345,
+    "order": 1,
+    "tracking_id": "SR12345678901123",
+    "status": "completed",
+    "title": "Duff Beer Company",
+    "address": "Avenida Guianas, 10 Vila Kennedy, bangu Rio de Janeiro, Brasil,
+    "latitude": -22.8540103,
+    "longitude": -43.493144,
+    "load": 1.0,
+    "load_2": 2.0,
+    "load_3": 3.1,
+    "window_start": "09:00",
+    "window_end": "11:00",
+    "window_start_2": "14:00",
+    "window_end_2": "22:00",
+    "duration": "20",
+    "contact_name": "Bart Simpsons",
+    "contact_phone": "+55 seu telefone aqui",
+    "contact_email": "exemplo@email.com",
+    "reference": "Leave in the Treehouse",
+    "notes": "nota\ncon\nenters\ntest",
+    "skills_required": [],
+    "skills_optional": [],
+    "planned_date": "2017-10-10",
+    "route": 12,
+    "route_estimated_time_start": null,
+    "estimated_time_arrival": null,
+    "estimated_time_departure": null,
+    "checkin_time": null,
+    "checkout_time": null,
+    "checkout_latitude": null,
+    "checkout_longitude": null,
+    "checkout_comment": "",
+    "checkout_observation": null,
+    "signature": null,
+    "pictures": [],
+    "created": "2017-10-10T18:35:24.797823Z",
+    "modified": "2017-10-10T18:35:24.800917Z",
+    "eta_predicted": "2017-10-10T00:00:00-03:00",
+    "eta_current": "2017-10-10T00:00:00-03:00",
+    "driver": null,
+    "vehicle": null,
+    "priority": false,
+    "sms_enabled": false,
+    "has_alert": false,
+    "priority_level": null
+}
+
+
+GET https://api.simpliroute.com/v1/routes/visits/?planned_date={{planned_date}}
+
+
+curl -X GET \
+  'https://api.simpliroute.com/v1/routes/visits/?planned_date=2020-01-01' \
+  -H 'authorization: Token 0e8048197b328b753ff0c98a74ddac7a031dc36e \
+  -H 'content-type: application/json'
+
+
+PUT https://api.simpliroute.com/v1/routes/visits/{{visit_id}}
+
+curl -X PUT \
+  https://api.simpliroute.com/v1/routes/visits/1111/ \
+  -H 'authorization: Token 0e8048197b328b753ff0c98a74ddac7a031dc36e \
+  -H 'content-type: application/json' \
+  -d '{
+  "title": "Updated visit",
+  "address": "new address",
+  "load": 39,
+  "duration": "00:00:10",
+  "contact_name": "New visit contact",
+  "contact_phone": "+55 seu telefone aqui",
+  "notes": "New information",
+  "planned_date": "2020-06-30"
+}'
+
+https://optimizator.simpliroute.com/vrp/optimize/sync/
+
+
+
+{
+    "vehicles": [
+        {
+            "identidade do veículo": "Vehicle 1",
+            "location_start": {
+                "ident": "warehouse A",
+                "lat": -33.4233926,
+                "lon": -70.6104996
+            },
+            "location_end": {
+                "ident": "warehouse C",
+                "lat": -33.4233926,
+                "lon": -70.6104996
+            },
+            "capacity": 3500,
+            "capacity_2": 3500,
+            "capacity_3": 3500,
+            "shift_start": "9:00",
+            "shift_end": "22:00",
+            "skills":[]
+        },
+        {
+            "ident": "Vehicle 2",
+            "location_start": {
+                "ident": "warehouse B",
+                "lat": -33.4233926,
+                "lon": -70.6104996
+            },
+            "location_end": {
+                "ident": "warehouse C",
+                "lat": -33.4233926,
+                "lon": -70.6104996
+            },
+            "capacity": 3500,
+            "capacity_2": 3500,
+            "capacity_3": 3500,
+            "shift_start": "9:00",
+            "shift_end": "22:00",
+            "skills":[]
+        }
+    ],
+    "nodes": [
+        {
+            "ident": "El Salto 4875",
+            "lat": -33.3887,
+            "lon": -70.62304,
+            "window_start": "09:00",
+            "window_end": "17:00",
+            "window_start_2": "19:00",
+            "window_end_2": "22:00",
+             "duration": 15
+        },
+        {
+            "ident": "Avenida Del Valle 7",
+            "lat": -33.39124,
+            "lon": -70.61387,
+            "load": 2530,
+            "window_start": "9:00",
+            "window_end": "11:00",
+            "window_start_2": "19:00",
+            "window_end_2": "22:00",
+            "duration": 15
+        },
+        {
+            "ident": "Larrain 5862",
+            "lat": -33.45066,
+            "lon": -70.54915,
+            "load": 77,
+            "window_start": "09:00",
+            "window_end": "17:00",
+            "window_start_2": "19:00",
+            "window_end_2": "22:00",
+            "priority_level": 1,
+
+            "duration": 10
+        }
+    ],
+      "balance": true,
+      "all_vehicles": false,
+      "join": true,
+      "open_ended": false,
+      "single_tour": true,
+      "fmv":1.0
+
+}
+
+{
+    "ident": "Vehicle 1",
+    "location_start": {
+        "ident": "warehouse B",
+        "lat": -33.4233926,
+        "lon": -70.6104996
+    },
+    "location_end": {
+        "ident": "warehouse C",
+        "lat": -33.345523,
+        "lon": -70.456992
+    },
+    "capacity": 3500,
+    "capacity_2": 3500,
+    "capacity_3": 3500,
+    "shift_start": "09:00",
+    "shift_end": "18:00",
+    "skills": ["north-east", "electricity", "cold"],
+    "refill": 30
+}
+
+{
+    "nodes": [
+        {
+            "ident": "Delivery 1",
+            "lat": -33.3887,
+            "lon": -70.62304
+        },
+        {
+            "ident": "Delivery 2",
+            "lat": -33.39124,
+            "lon": -70.61387,
+            "load": 253.1,
+            "load_2": 2.0,
+            "load_2": 3.2,
+            "window_start": "09:00",
+            "window_end": "11:00",
+            "window_start_2": "13:00",
+            "window_end_2": "15:00",
+            "duration": 15,
+            "skills_required": ["north-east"],
+            "skills_optional": ["electricity"],
+            "priority_level": 2
+
+        }
+    ]
+}
+
+{
+    "vehicles": [
+        {
+            "ident": "Vehicle 1",
+            "location_start": {
+                "ident": "depot_1_start",
+                "lat": -33.4233926,
+                "lon": -70.6104996
+            }
+        }
+    ],
+    "nodes": [
+        {
+            "ident": "1",
+            "lat": -33.436135,
+            "lon": -70.6509688
+        },
+        {
+            "ident": "2",
+            "lat": -33.4334123,
+            "lon": -70.653234
+        },
+        {
+            "ident": "3",
+            "lat": -33.333413,
+            "lon": -70.5534688
+        }
+    ]
+}
+
+{
+    "vehicles": [{
+        "ident": "Vehicle 1",
+        "tours": [{
+            "nodes": [{
+                "arrival": "00:00",
+                "ident": "depot_1_start",
+                "lon": -70.6104996,
+                "departure": "00:00",
+                "lat": -33.4233926,
+                "order": 0
+            }, {
+                "load": 0,
+                "arrival": "00:17",
+                "ident": "3",
+                "lon": -70.5534688,
+                "departure": "00:17",
+                "lat": -33.333413,
+                "order": 1
+            }, {
+                "load": 0,
+                "arrival": "00:39",
+                "ident": "2",
+                "lon": -70.653234,
+                "departure": "00:39",
+                "lat": -33.4334123,
+                "order": 2
+            }, {
+                "load": 0,
+                "arrival": "00:40",
+                "ident": "1",
+                "lon": -70.6509688,
+                "departure": "00:40",
+                "lat": -33.436135,
+                "order": 3
+            }, {
+                "arrival": "01:42",
+                "ident": "depot_1_start",
+                "lon": -70.6104996,
+                "departure": "01:42",
+                "lat": -33.4233926,
+                "order": 11
+            }]
+        }]
+    }],
+    "num_vehicles_used": 1
+}
+
+{
+    "vehicles": [{
+        "ident": "Vehicle 1 different start and end",
+        "shift_start": "09:00",
+        "shift_end": "19:00",
+        "location_start": {
+            "ident": "depot_1_start",
+            "lat": -33.4233926,
+            "lon": -70.6104996
+        },
+        "location_end": {
+            "ident": "depot_2_end",
+            "lat": -33.436662,
+            "lon": -70.577584
+        }
+    }],
+    "nodes": [{
+        "ident": "1",
+        "lat": -33.436135,
+        "lon": -70.6509688
+    }, {
+        "ident": "2",
+        "lat": -33.4334135,
+        "lon": -70.6534688,
+        "duration": 5
+    }, {
+        "ident": "3",
+        "lat": -33.333413,
+        "lon": -70.5534688,
+        "duration": 5
+    }]
+}
+
+
+{
+    {
+    "vehicles": [{
+        "ident": "Vehicle 1 different start and end",
+        "tours": [{
+            "nodes": [{
+                "arrival": "09:00",
+                "ident": "depot_1_start",
+                "lon": -70.6104996,
+                "departure": "09:00",
+                "lat": -33.4233926,
+                "order": 0
+            }, {
+                "load": 0,
+                "arrival": "09:17",
+                "ident": "2",
+                "lon": -70.6534688,
+                "departure": "09:22",
+                "lat": -33.4334135,
+                "order": 1
+            }, {
+                "load": 0,
+                "arrival": "10:05",
+                "ident": "1",
+                "lon": -70.6509688,
+                "departure": "10:35",
+                "lat": -33.436135,
+                "order": 2
+            }, {
+                "load": 0,
+                "arrival": "10:49",
+                "ident": "3",
+                "lon": -70.5534688,
+                "departure": "11:19",
+                "lat": -33.333413,
+                "order": 3
+            },{
+                "arrival": "11:56",
+                "ident": "depot_2_end",
+                "lon": -70.577584,
+                "departure": "11:56",
+                "lat": -33.436662,
+                "order": 4
+            }]
+        }]
+    }],
+    "num_vehicles_used": 1
+}
+
+
+https://optimizator.simpliroute.com/etc/sync
+
+{
+  "vehicle": {
+    "vehicle_id": "Vehicle 1",
+    "lat": -33.45754,
+    "lon": -70.92697,
+    "departure_time": "09:00"
+  },
+  "tours": [{
+    "nodes": [{
+        "id": "id1",
+        "lat": -33.45754,
+        "lon": -70.62697,
+        "service_time": 30.0,
+        "order": 0
+      },
+      {
+        "id": "id2",
+        "lat": -33.45744,
+        "lon": -70.77532,
+        "service_time": 90.0,
+        "order": 1
+      },
+      {
+        "id": "id3",
+        "lat": -33.45742,
+        "lon": -70.60364,
+        "service_time": 90.0,
+        "order": 2
+      }
+    ]
+  }],
+  "fmv":2.0
+}
+
+
+{
+    "vehicle": {
+        "vehicle_id": "Vehicle 1",
+        "lat": -33.45754,
+        "lon": -70.92697,
+        "departure_time": "09:00"
+    },
+    "tours": [
+        {
+            "nodes": [
+                {
+                    "id": "id1",
+                    "lat": -33.45754,
+                    "lon": -70.62697,
+                    "service_time": 30,
+                    "order": 0,
+                    "arrival": "09:48",
+                    "departure": "10:18"
+                },
+                {
+                    "id": "id2",
+                    "lat": -33.45744,
+                    "lon": -70.77532,
+                    "service_time": 90,
+                    "order": 1,
+                    "arrival": "10:50",
+                    "departure": "12:20"
+                },
+                {
+                    "id": "id3",
+                    "lat": -33.45742,
+                    "lon": -70.60364,
+                    "service_time": 90,
+                    "order": 2,
+                    "arrival": "13:00",
+                    "departure": "14:30"
+                }
+            ]
+        }
+    ]
+}
+
+
