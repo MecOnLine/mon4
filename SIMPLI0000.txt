@@ -6,7 +6,7 @@ ccurl curl -X GET \
 {
         "id": 123,
         "order": 1,
-        "tracking_id": "SR12345678901234",
+        "tracking_id": "123",
         "status": "pending",
         "title": "Kwik e mart",
         "address": "Rio de Janeiro, Brasil",
